@@ -1,0 +1,64 @@
+{
+  "name": "digiscore-business-os",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "electron": "electron electron/main.cjs",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron electron/main.cjs\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2",
+    "@supabase/supabase-js": "^2.117.2",
+    "@types/canvas-confetti": "^1.9.0",
+    "canvas-confetti": "^1.9.4",
+    "clsx": "^2.1.1",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.50.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "autoprefixer": "^10.6.1",
+    "concurrently": "^10.0.5",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.81.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "wait-on": "^9.5.1"
+  },
+  "build": {
+    "appId": "com.digiscore.businessos",
+    "productName": "DIGI SCORE",
+    "icon": "build/icon.ico",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "artifactName": "DIGI-SCORE-Setup.exe"
+    }
+  }
+}

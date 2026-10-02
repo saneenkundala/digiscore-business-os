@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #7c3aed;
+    --brand-secondary: #ec4899;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased font-sans selection:bg-fuchsia-500 selection:text-white min-h-screen;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* iOS Safe Area Insets (iPhone notch, Dynamic Island, Home indicator pill) */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+.mb-safe {
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Touch targets and iOS form auto-zoom prevention */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevents unwanted auto-zoom in iPhone Safari */
+  }
+}
+
+/* Smooth Momentum Touch Scrolling for iPhone and Android */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(147, 51, 234, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(147, 51, 234, 0.7);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-glow {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 8px 32px -4px rgba(168, 85, 247, 0.15);
+}
+
+.glass-input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+}
+.glass-input:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25);
+}
